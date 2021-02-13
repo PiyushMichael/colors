@@ -7,19 +7,20 @@ const App = () => {
   const [matrix, setMatrix] = useState([]);
 
   useEffect(() => {
+    // promise for asynchronous execution
     const matrixTask = () => new Promise((resolve, reject) => {
-      const arr = [];
-      let temp = [];
+      const arr = [];     // the matrix
+      let temp = [];      // each row in the matrix
       let i = 8;
       let j = 8;
       let k = 8;
       while (i <= 256) {
         while (j <= 256) {
           while (k <= 256) {
-            temp.push(`rgb(${i-1},${j-1},${k-1})`);
+            temp.push(`rgb(${i-1},${j-1},${k-1})`);     // inserting rgb strings in the row
             k += 8;
           }
-          if (j % 64 === 0) {
+          if (j % 64 === 0) {                           // breaking up the row every 256 total iterations which is 8 iterations of the middle loop
             arr.push(temp);
             temp = [];
           }
@@ -32,12 +33,14 @@ const App = () => {
       resolve(arr);
     });
 
+    // aynchronously executing the logic
     matrixTask()
     .then(res => {
       setLoading(false);
       setMatrix(res);
     })
     .catch(e => {
+      setLoading(false);
       console.log(e);
     });
   }, []);
