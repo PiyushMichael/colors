@@ -6,6 +6,7 @@ I think you would agree that the result is interesting if not aesthetically plea
 You can visit the deployed code here: [Colors](https://colors-piyush.netlify.app/)
 
 ## More info
+- No third-party libraries used.
 - Integrated hooks in the code.
 - Didn't write tests as I am not familiar with them.
 
